@@ -16,6 +16,7 @@ namespace Sweepstakes
         public Sweepstakes(string name)
         {
             sweepstakesDictionary = new Dictionary<string, string>();
+            contestants = new List<Contestant>();
             this.name = name;
             numberOfContestants = 0;
         }

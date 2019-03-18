@@ -6,7 +6,7 @@ using System.Text;
 namespace Sweepstakes
 {
     public static class UI
-    {        
+    {
         public static string[] EnterInfo()
         {
             string[] userInfo = new string[3];
@@ -29,7 +29,16 @@ namespace Sweepstakes
 
         public static void PrintWinner(string sweepstakesName, string winnerFirstName, string winnerLastName, string winnerEmail)
         {
-            Console.WriteLine("The winner of the {0} sweepstakes is {1} {2}, {3}", sweepstakesName, winnerFirstName,winnerLastName, winnerEmail );
+            Console.WriteLine("The winner of the {0} sweepstakes is {1} {2}, {3}", sweepstakesName, winnerFirstName, winnerLastName, winnerEmail);
+            Console.ReadLine();
+        }
+
+        public static void IncorrectInput()
+        {
+            Console.WriteLine("That was not an option. Please try again.");
         }
     }
 }
+
+
+    

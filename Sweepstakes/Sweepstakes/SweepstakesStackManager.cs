@@ -9,17 +9,17 @@ namespace Sweepstakes
     {
         public SweepstakesStackManager()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void GetSweepstakes()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void InsertSweepstakes()
+        public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
