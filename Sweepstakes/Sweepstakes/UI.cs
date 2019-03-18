@@ -27,6 +27,12 @@ namespace Sweepstakes
             return Console.ReadLine();
         }
 
+        public static string ChooseInterface()
+        {
+            Console.WriteLine("Would you like to use Stack or Queue?");
+            return Console.ReadLine();
+        }
+
         public static void PrintWinner(string sweepstakesName, string winnerFirstName, string winnerLastName, string winnerEmail)
         {
             Console.WriteLine("The winner of the {0} sweepstakes is {1} {2}, {3}", sweepstakesName, winnerFirstName, winnerLastName, winnerEmail);

@@ -47,12 +47,11 @@ namespace Sweepstakes
             }
 
             return stringWinner;
-
         }
 
-        public void PrintContestantInfo()
+        public void PrintContestantInfo(Contestant contestant)
         {
-            
+            UI.PrintWinner(Name, contestant.FirstName, contestant.LastName, contestant.Email);
         }
     }
 }

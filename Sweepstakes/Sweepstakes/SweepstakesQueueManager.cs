@@ -7,19 +7,22 @@ namespace Sweepstakes
 {
     public class SweepstakesQueueManager : ISweepstakesManager
     {
+        Queue<Sweepstakes> QueueManager;
+
         public SweepstakesQueueManager()
         {
-            
+            QueueManager = new Queue<Sweepstakes>();
         }
 
-        public void GetSweepstakes()
+        public Sweepstakes GetSweepstakes()
         {
-            
+            return QueueManager.Dequeue();   
         }
 
         public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
-            
+            QueueManager.Enqueue(sweepstakes);
         }
+
     }
 }

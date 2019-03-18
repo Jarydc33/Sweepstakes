@@ -9,10 +9,12 @@ namespace Sweepstakes
     {
         List<Contestant> allContestants;
         Sweepstakes Sweepstakes;
+        ISweepstakesManager _manager;
         int registrationCounter;
 
-        public MarketingFirm()
+        public MarketingFirm(ISweepstakesManager manager)
         {
+            _manager = manager;
             allContestants = new List<Contestant>();
             Sweepstakes = new Sweepstakes("New Car Giveaway!");
             registrationCounter = 0;
@@ -56,7 +58,7 @@ namespace Sweepstakes
         {
             string winner = Sweepstakes.PickWinner(); //name of winner
             Contestant ContestantWinner = FindWinner(winner);
-            UI.PrintWinner(Sweepstakes.Name, ContestantWinner.FirstName, ContestantWinner.LastName, ContestantWinner.Email);
+            Sweepstakes.PrintContestantInfo(ContestantWinner);            
         }
 
         public string CreateRegistrationNumber()
