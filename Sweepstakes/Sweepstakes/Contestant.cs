@@ -6,48 +6,58 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class Contestant
+    public class Contestant
     {
-        private int firstName;
-        private int lastName;
-        private int email;
-        private int registrationNum;
-
-        public Contestant()
+        private string firstName;
+        public string FirstName
         {
-
-        }
-
-        public int FirstName
-        {
-            get => default(int);
+            get => firstName;
             set
             {
+                firstName = value;
+            }
+        }
+        private string lastName;
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                lastName = value;
+            }
+        }
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+            }
+        }
+        private string registrationNum;
+        public string RegistrationNum
+        {
+            get => registrationNum;
+            set
+            {
+                registrationNum = value;
             }
         }
 
-        public int LastName
+        public Contestant(string firstName, string lastName, string email)
         {
-            get => default(int);
-            set
-            {
-            }
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
         }
 
-        public int Email
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        
 
-        public int RegistrationNum
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+
+
+
+
+
     }
 }
