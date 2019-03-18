@@ -7,24 +7,49 @@ namespace Sweepstakes
 {
     public class Sweepstakes
     {
-        public Sweepstakes()
+        Dictionary<string, string> sweepstakesDictionary;
+        string name;
+        string Name { get => name; }
+        int numberOfContestants;
+
+        public Sweepstakes(string name)
         {
-            throw new System.NotImplementedException();
+            sweepstakesDictionary = new Dictionary<string, string>();
+            this.name = name;
+            numberOfContestants = 0;
         }
 
-        public void RegisterContestant()
+        public void RegisterContestant(Contestant contestant)
         {
-            throw new System.NotImplementedException();
+            string fullName = contestant.FirstName + " " + contestant.LastName;
+            sweepstakesDictionary.Add(contestant.RegistrationNum, fullName);
+            numberOfContestants++;
+            
         }
 
-        public void PickWinner()
+        public string PickWinner()
         {
-            throw new System.NotImplementedException();
+            Random WinnerPicker = new Random();
+            int winner;
+            string stringWinner;
+            winner = WinnerPicker.Next(0, numberOfContestants);
+            stringWinner = winner.ToString();
+
+            foreach(KeyValuePair<string,string> winningNumber in sweepstakesDictionary)
+            {
+                if(stringWinner == winningNumber.Key)
+                {
+                    stringWinner = winningNumber.Value;
+                }
+            }
+
+            return stringWinner;
+
         }
 
         public void PrintContestantInfo()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

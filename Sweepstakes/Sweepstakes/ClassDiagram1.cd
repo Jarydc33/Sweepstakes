@@ -10,24 +10,24 @@
   <Class Name="Sweepstakes.MarketingFirm">
     <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAUAAABAAAAAAQAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MarketingFirm.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Sweepstakes" />
+      <Field Name="Sweepstakes" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Sweepstakes.Sweepstakes">
     <Position X="6" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAQAAAAIAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAQAgAAEAAAAAAQAAAAIAAA=</HashCode>
       <FileName>Sweepstakes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sweepstakes.UI">
     <Position X="1.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI.cs</FileName>
     </TypeIdentifier>
   </Class>
