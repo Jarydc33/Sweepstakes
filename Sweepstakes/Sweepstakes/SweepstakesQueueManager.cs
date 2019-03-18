@@ -11,5 +11,15 @@ namespace Sweepstakes
         {
             throw new System.NotImplementedException();
         }
+
+        public void GetSweepstakes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertSweepstakes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

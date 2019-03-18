@@ -10,6 +10,7 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
+            MarketingFirm myFirm = new MarketingFirm();
         }
     }
 }

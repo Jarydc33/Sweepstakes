@@ -15,7 +15,7 @@ namespace Sweepstakes
         {
             allContestants = new List<Contestant>();
             Sweepstakes = new Sweepstakes("New Car Giveaway!");
-            registrationCounter = 1;
+            registrationCounter = 0;
             GetEntries();
             
         }
@@ -24,8 +24,9 @@ namespace Sweepstakes
         {
             string[] newEntry = new string[4];
             newEntry = UI.EnterInfo();
-            newEntry[3] = CreateRegistrationNumber();
-            allContestants.Add(new Contestant(newEntry[0], newEntry[1], newEntry[2], newEntry[3]));
+            string registrationNumber = CreateRegistrationNumber();
+            allContestants.Add(new Contestant(newEntry[0], newEntry[1], newEntry[2], registrationNumber));
+            Sweepstakes.RegisterContestant(allContestants[0]);
             string enterMore = UI.EnterMore();
 
             switch (enterMore)
@@ -35,13 +36,20 @@ namespace Sweepstakes
                     break;
 
                 case "no":
-                    Environment.Exit(0);
+                    PickWinner();
                     break;
 
                 default:
                     
                     break;
             }
+        }
+
+        public void PickWinner()
+        {
+            string winner = Sweepstakes.PickWinner(); //name of winner
+            Contestant ContestantWinner = FindWinner(winner);
+            UI.PrintWinner(Sweepstakes.Name, ContestantWinner.FirstName, ContestantWinner.LastName, ContestantWinner.Email);
         }
 
         public string CreateRegistrationNumber()
@@ -51,9 +59,17 @@ namespace Sweepstakes
             string stringRegistration = registration.ToString();
             return stringRegistration;
         }
-        public void StoreRegistrationNumbers(int registration)
+
+        public Contestant FindWinner(string winner)
         {
-            //BST here
+            foreach(Contestant contestant in allContestants)
+            {
+                if (winner == contestant.FirstName + " " + contestant.LastName)
+                {
+                    return contestant;
+                }                
+            }
+            return FindWinner(winner);
         }
     }
 }
