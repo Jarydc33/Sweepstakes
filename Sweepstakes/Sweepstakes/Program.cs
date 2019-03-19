@@ -23,7 +23,7 @@ namespace Sweepstakes
             MyFirm.GetEntries();
             MyFirm.GetEntries();
 
-            MyFirm.PickWinner();
+            MyFirm.DetermineWinner();
         }
     }
 }

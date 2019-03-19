@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    public class Winner : IContestant
+    public class Winner : Contestant
     {
-        Contestant winner;
-        public Winner(Contestant winner)
+
+        public Winner(string firstName, string lastName, string email, string registration)
         {
-            this.winner = winner;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            RegistrationNum = registration;
         }
 
-        public void PostWinner()
+        public override void PostWinner()
         {
-            
+            Console.WriteLine("Congratulations! You won the sweepstakes!");
         }
     }
 }
