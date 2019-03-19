@@ -24,6 +24,7 @@ namespace Sweepstakes
             MyFirm.GetEntries();
 
             MyFirm.DetermineWinner();
+            Console.ReadLine();
         }
     }
 }

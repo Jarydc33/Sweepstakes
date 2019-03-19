@@ -9,7 +9,7 @@ namespace Sweepstakes
     public class Winner : Contestant
     {
 
-        public Winner(string firstName, string lastName, string email, string registration)
+        public Winner(string firstName, string lastName, string email, string registration) :base(firstName,lastName,email,registration)
         {
             FirstName = firstName;
             LastName = lastName;
