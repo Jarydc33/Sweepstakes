@@ -11,21 +11,24 @@ namespace Sweepstakes
 
         public ManagerChooser()
         {
-            string userInput = UI.ChooseInterface();
-            SweepstakesStackManager _StackManager;
-            SweepstakesQueueManager _QueueManager;
-            MarketingFirm myFirm;
-            switch (userInput.ToLower())
+            
+        }
+
+        public ISweepstakesManager UserChoice(string choice)
+        {
+            switch (choice)
             {
                 case "stack":
-                    _StackManager = new SweepstakesStackManager();
-                    myFirm = new MarketingFirm(_StackManager);
-                    break;
+                    SweepstakesStackManager _StackManager = new SweepstakesStackManager();
+                    return _StackManager;
+
+                case "queue":
+                    SweepstakesQueueManager _QueueManager = new SweepstakesQueueManager();
+                    return _QueueManager;
 
                 default:
-                    _QueueManager = new SweepstakesQueueManager();
-                    myFirm = new MarketingFirm(_QueueManager);
-                    break;
+                    SweepstakesQueueManager _DefaultQueueManager = new SweepstakesQueueManager();
+                    return _DefaultQueueManager;
             }
         }
     }
