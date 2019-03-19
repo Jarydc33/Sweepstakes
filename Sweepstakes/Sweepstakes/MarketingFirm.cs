@@ -8,7 +8,7 @@ namespace Sweepstakes
 {
     public class MarketingFirm
     {
-        List<Contestant> allContestants;
+        List<IContestant> allContestants;
         Sweepstakes CurrentSweepstakes;
         ISweepstakesManager _manager;
         int registrationCounter;
@@ -16,7 +16,7 @@ namespace Sweepstakes
         public MarketingFirm(ISweepstakesManager manager)
         {
             _manager = manager;
-            allContestants = new List<Contestant>();
+            allContestants = new List<IContestant>();
             registrationCounter = 0;
             
         }
@@ -45,7 +45,13 @@ namespace Sweepstakes
         {
             string winner = CurrentSweepstakes.PickWinner(); //name of winner
             Contestant ContestantWinner = FindWinner(winner);
-            CurrentSweepstakes.PrintContestantInfo(ContestantWinner);  //this will be changed with observer pattern          
+            allContestants.Add(new Winner(ContestantWinner));
+            CurrentSweepstakes.PrintContestantInfo(ContestantWinner);  //this will be changed with observer pattern   
+            
+            foreach(IContestant entries in allContestants)
+            {
+                entries.PostWinner();
+            }
         }
 
         public string CreateRegistrationNumber()

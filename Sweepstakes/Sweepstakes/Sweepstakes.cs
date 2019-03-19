@@ -73,8 +73,9 @@ namespace Sweepstakes
             };
 
             using (var client = new MailKit.Net.Smtp.SmtpClient())
-            {
-                client.Connect("157.56.252.134", 587, false);
+            {               
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                client.Connect("smtp.office365.com", 587, false);
                 client.Authenticate("MarketFirmTester@outlook.com", "P@$$w0rd");
                 client.Send(message);
                 client.Disconnect(true);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    public class Contestant
+    public class Contestant : IContestant
     {
         private string firstName;
         public string FirstName
@@ -51,6 +51,11 @@ namespace Sweepstakes
             LastName = lastName;
             Email = email;
             RegistrationNum = registration;
+        }
+
+        public void PostWinner()
+        {
+
         }
 
         
