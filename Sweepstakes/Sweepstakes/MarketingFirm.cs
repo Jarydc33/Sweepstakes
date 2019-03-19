@@ -15,6 +15,7 @@ namespace Sweepstakes
         public MarketingFirm(ISweepstakesManager manager)
         {
             _manager = manager;
+            manager.InsertSweepstakes(Sweepstakes);
             allContestants = new List<Contestant>();
             Sweepstakes = new Sweepstakes("New Car Giveaway!");
             registrationCounter = 0;

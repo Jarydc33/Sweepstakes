@@ -10,22 +10,8 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
-            string userInput = UI.ChooseInterface();
-            SweepstakesStackManager _StackManager;
-            SweepstakesQueueManager _QueueManager;
-            MarketingFirm myFirm;
-            switch (userInput)
-            {
-                case "stack":
-                    _StackManager = new SweepstakesStackManager();
-                    myFirm = new MarketingFirm(_StackManager);
-                    break;
-
-                case "queue":
-                    _QueueManager = new SweepstakesQueueManager();
-                    myFirm = new MarketingFirm(_QueueManager);
-                    break;
-            }
+            
+            ManagerChooser myManager = new ManagerChooser();
                         
         }
     }
