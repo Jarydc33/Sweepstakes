@@ -41,7 +41,8 @@ namespace Sweepstakes
 
         public static void IncorrectInput()
         {
-            Console.WriteLine("That was not an option. Please try again.");
+            Console.WriteLine("That was not an option. Please press any key to try again.");
+            Console.ReadLine();
         }
     }
 }
