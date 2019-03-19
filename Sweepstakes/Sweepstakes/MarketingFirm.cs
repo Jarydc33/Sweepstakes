@@ -8,15 +8,20 @@ namespace Sweepstakes
     public class MarketingFirm
     {
         List<Contestant> allContestants;
-        Sweepstakes Sweepstakes;
+        Sweepstakes CurrentSweepstakes;
+        Sweepstakes CarSweepstakes;
+        Sweepstakes VacationSweepstakes;
         ISweepstakesManager _manager;
         int registrationCounter;
 
         public MarketingFirm(ISweepstakesManager manager)
         {
             _manager = manager;
-            Sweepstakes = new Sweepstakes("New Car Giveaway!");
-            manager.InsertSweepstakes(Sweepstakes);
+            CarSweepstakes = new Sweepstakes("New Car Giveaway!");
+            VacationSweepstakes = new Sweepstakes("Trip to Hawaii Giveaway!");
+            manager.InsertSweepstakes(CarSweepstakes);
+            manager.InsertSweepstakes(VacationSweepstakes);
+            CurrentSweepstakes = manager.GetSweepstakes();
             allContestants = new List<Contestant>();
             registrationCounter = 0;
             GetEntries();
@@ -29,7 +34,7 @@ namespace Sweepstakes
             newEntry = UI.EnterInfo();
             string registrationNumber = CreateRegistrationNumber();
             allContestants.Add(new Contestant(newEntry[0], newEntry[1], newEntry[2], registrationNumber));
-            Sweepstakes.RegisterContestant(allContestants[registrationCounter]);
+            CurrentSweepstakes.RegisterContestant(allContestants[registrationCounter]);
             registrationCounter++;
             GetMoreEntries();
         }
@@ -57,9 +62,9 @@ namespace Sweepstakes
 
         public void PickWinner()
         {
-            string winner = Sweepstakes.PickWinner(); //name of winner
+            string winner = CurrentSweepstakes.PickWinner(); //name of winner
             Contestant ContestantWinner = FindWinner(winner);
-            Sweepstakes.PrintContestantInfo(ContestantWinner);            
+            CurrentSweepstakes.PrintContestantInfo(ContestantWinner);            
         }
 
         public string CreateRegistrationNumber()

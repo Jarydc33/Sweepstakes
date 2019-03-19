@@ -15,14 +15,14 @@ namespace Sweepstakes
             SweepstakesStackManager _StackManager;
             SweepstakesQueueManager _QueueManager;
             MarketingFirm myFirm;
-            switch (userInput)
+            switch (userInput.ToLower())
             {
                 case "stack":
                     _StackManager = new SweepstakesStackManager();
                     myFirm = new MarketingFirm(_StackManager);
                     break;
 
-                case "queue":
+                default:
                     _QueueManager = new SweepstakesQueueManager();
                     myFirm = new MarketingFirm(_QueueManager);
                     break;
