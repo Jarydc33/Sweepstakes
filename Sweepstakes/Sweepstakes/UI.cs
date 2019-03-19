@@ -20,13 +20,6 @@ namespace Sweepstakes
             return userInfo;
         }
 
-        public static string EnterMore()
-        {
-            Console.Clear();
-            Console.WriteLine("Would you like to enter another contestant? Enter yes or no");
-            return Console.ReadLine();
-        }
-
         public static string ChooseInterface()
         {
             Console.WriteLine("Would you like to use Stack or Queue?");
@@ -36,12 +29,6 @@ namespace Sweepstakes
         public static void PrintWinner(string sweepstakesName, string winnerFirstName, string winnerLastName, string winnerEmail)
         {
             Console.WriteLine("The winner of the {0} sweepstakes is {1} {2}, {3}", sweepstakesName, winnerFirstName, winnerLastName, winnerEmail);
-            Console.ReadLine();
-        }
-
-        public static void IncorrectInput()
-        {
-            Console.WriteLine("That was not an option. Please press any key to try again.");
             Console.ReadLine();
         }
     }
