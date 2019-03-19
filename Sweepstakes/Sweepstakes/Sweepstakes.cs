@@ -69,7 +69,7 @@ namespace Sweepstakes
         public void PrintContestantInfo(Contestant contestant)
         {
             Console.WriteLine("{0} {1}, {2}", contestant.FirstName, contestant.LastName, contestant.Email);
-            contestant.PostWinner();
+            contestant.PostWinner(contestWinner);
             //SendEmail(contestant);
             
         }

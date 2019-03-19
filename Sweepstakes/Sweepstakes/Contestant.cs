@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    public class Contestant : IContestant
+    public class Contestant
     {
         private string firstName;
         public string FirstName
@@ -53,9 +53,9 @@ namespace Sweepstakes
             RegistrationNum = registration;
         }
 
-        public virtual void PostWinner()
+        public virtual void PostWinner(Contestant winner)
         {
-            Console.WriteLine("Sorry to inform you but you did not win the sweepstakes!");
+            Console.WriteLine("Sorry to inform you but you did not win the sweepstakes! The winner was {0} {1}", winner.FirstName,winner.LastName);
         }
 
         
