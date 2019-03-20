@@ -16,9 +16,9 @@ namespace Sweepstakes
             ISweepstakesManager _Manager = myManager.UserChoice(choice);
 
             MarketingFirm MyFirm = new MarketingFirm(_Manager);
+            
+            MyFirm.InsertNewSweepstakes(new Sweepstakes("Free car!"));
             MyFirm.GetNewSweepstakes();
-            //MyFirm.InsertNewSweepstakes(new Sweepstakes("Free car!"));
-            //MyFirm.GetNewSweepstakes();
 
             MyFirm.GetEntries();
             MyFirm.GetEntries();

@@ -46,7 +46,7 @@ namespace Sweepstakes
             foreach(KeyValuePair<string,Contestant> contestants in sweepstakesDictionary)
             {
                 PrintContestantInfo(contestants.Value);
-                contestant.Notify(contestWinner);
+                contestants.Value.Notify(contestWinner);
             }
             return contestWinner.FirstName + contestWinner.LastName;
         }
