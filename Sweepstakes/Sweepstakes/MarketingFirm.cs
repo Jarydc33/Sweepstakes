@@ -1,7 +1,11 @@
-﻿using System;
+﻿using MimeKit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MailKit.Net.Smtp;
+using MailKit;
+using MailKit.Security;
 
 
 namespace Sweepstakes
@@ -15,7 +19,7 @@ namespace Sweepstakes
         public MarketingFirm(ISweepstakesManager manager)
         {
             _manager = manager;
-            
+
         }
 
         public void InsertNewSweepstakes(Sweepstakes sweepstakesToInsert)
@@ -25,7 +29,7 @@ namespace Sweepstakes
 
         public void GetNewSweepstakes()
         {
-            CurrentSweepstakes = _manager.GetSweepstakes(); //trycatch?
+            CurrentSweepstakes = _manager.GetSweepstakes();
         }
 
         public void GetEntries()
@@ -37,10 +41,30 @@ namespace Sweepstakes
 
         public void DetermineWinner()
         {
-            winner = CurrentSweepstakes.PickWinner(); //use this somehow
-            
+            winner = CurrentSweepstakes.PickWinner();
+            SendEmail(CurrentSweepstakes.contestWinner);
+
         }
 
-        
+        public void SendEmail(Contestant contestant)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Marketing Firm", "marketfirmnotifier@outlook.com"));
+            message.To.Add(new MailboxAddress(contestant.FirstName + contestant.LastName, contestant.Email));
+            message.Subject = "Congratulations!";
+
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Congratulations " + contestant.FirstName + ", you entered our marketing sweepstakes and you won! We wanted to send a message out to congratulate you!"
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.office365.com", 587);
+                client.Authenticate("marketfirmnotifier@outlook.com", "P@$$w0rd!!");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
     }
 }
