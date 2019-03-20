@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using MailKit.Net.Smtp;
 using MailKit;
+using MailKit.Security;
 
 namespace Sweepstakes
 {
@@ -14,7 +14,7 @@ namespace Sweepstakes
         Dictionary<string, Contestant> sweepstakesDictionary;
         string name;
         public string Name { get => name; }
-        int numberOfContestants;
+        public int numberOfContestants;
         Winner contestWinner;
 
         public Sweepstakes(string name)
@@ -33,10 +33,10 @@ namespace Sweepstakes
 
         public string PickWinner()
         {
-            Random WinnerPicker = new Random();
+            Random winnerPicker = new Random();
             int winningRegistration;
             string stringWinner;
-            winningRegistration = WinnerPicker.Next(0, numberOfContestants);
+            winningRegistration = winnerPicker.Next(0, numberOfContestants);
             stringWinner = winningRegistration.ToString();
 
             contestWinner = RemoveContestant(stringWinner);
@@ -46,18 +46,19 @@ namespace Sweepstakes
             foreach(KeyValuePair<string,Contestant> contestants in sweepstakesDictionary)
             {
                 PrintContestantInfo(contestants.Value);
+                contestant.Notify(contestWinner);
             }
             return contestWinner.FirstName + contestWinner.LastName;
         }
 
-        public Winner RemoveContestant(string winningReg)
+        public Winner RemoveContestant(string registrationToFind)
         {
-            foreach (KeyValuePair<string, Contestant> winningNumber in sweepstakesDictionary)
+            foreach (KeyValuePair<string, Contestant> registrations in sweepstakesDictionary)
             {
-                if (winningReg == winningNumber.Key)
+                if (registrationToFind == registrations.Key)
                 {
-                    contestWinner = new Winner(winningNumber.Value.FirstName, winningNumber.Value.LastName, winningNumber.Value.Email, winningNumber.Key);
-                    sweepstakesDictionary.Remove(winningNumber.Key);
+                    contestWinner = new Winner(registrations.Value.FirstName, registrations.Value.LastName, registrations.Value.Email, registrations.Key);
+                    sweepstakesDictionary.Remove(registrations.Key);
                     break;
 
                 }
@@ -69,7 +70,7 @@ namespace Sweepstakes
         public void PrintContestantInfo(Contestant contestant)
         {
             Console.WriteLine("{0} {1}, {2}", contestant.FirstName, contestant.LastName, contestant.Email);
-            contestant.PostWinner(contestWinner);
+            
             //SendEmail(contestant);
             
         }
@@ -78,24 +79,23 @@ namespace Sweepstakes
         //{
         //    var message = new MimeMessage();
         //    message.From.Add(new MailboxAddress("Marketing Firm", "MarketFirmTester@outlook.com"));
-        //    message.To.Add(new MailboxAddress(contestant.FirstName + contestant.LastName, contestant.Email));
+        //    message.To.Add(new MailboxAddress(contestant.FirstName + contestant.LastName, "jarydc333@gmail.com"));
         //    message.Subject = "Congratulations!";
 
         //    message.Body = new TextPart("plain")
         //    {
-        //        Text = @"Congratulations "+ contestant.FirstName+", you entered our marketing sweepstakes and you won! We wanted to send a message out to congratulate you!"
+        //        Text = @"Congratulations " + contestant.FirstName + ", you entered our marketing sweepstakes and you won! We wanted to send a message out to congratulate you!"
         //    };
 
-        //    using (var client = new MailKit.Net.Smtp.SmtpClient())
-        //    {               
-        //        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-        //        client.Connect("smtp.office365.com", 587, false);
-        //        client.Authenticate("MarketFirmTester@outlook.com", "P@$$w0rd");
+        //    using (var client = new SmtpClient())
+        //    {
+        //        client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
+        //        client.Authenticate("MarketFirmNotifier@gmail.com", "P@$$w0rd!!");
         //        client.Send(message);
         //        client.Disconnect(true);
         //    }
-            
-            
+
+
         //}
     }
     

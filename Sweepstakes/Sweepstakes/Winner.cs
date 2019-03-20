@@ -17,7 +17,7 @@ namespace Sweepstakes
             RegistrationNum = registration;
         }
 
-        public override void PostWinner(Contestant winner)
+        public override void Notify(Contestant winner)
         {
             Console.WriteLine("Congratulations, {0} {1}! You won the sweepstakes!", winner.FirstName, winner.LastName);
         }

@@ -53,7 +53,7 @@ namespace Sweepstakes
             RegistrationNum = registration;
         }
 
-        public virtual void PostWinner(Contestant winner)
+        public virtual void Notify(Contestant winner)
         {
             Console.WriteLine("Sorry to inform you but you did not win the sweepstakes! The winner was {0} {1}", winner.FirstName,winner.LastName);
         }

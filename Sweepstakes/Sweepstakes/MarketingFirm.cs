@@ -10,12 +10,10 @@ namespace Sweepstakes
     {
         Sweepstakes CurrentSweepstakes;
         ISweepstakesManager _manager;
-        int registrationCounter;
 
         public MarketingFirm(ISweepstakesManager manager)
         {
             _manager = manager;
-            registrationCounter = 0;
             
         }
 
@@ -26,30 +24,30 @@ namespace Sweepstakes
 
         public void GetNewSweepstakes()
         {
-            CurrentSweepstakes = _manager.GetSweepstakes();
+            try
+            {
+                CurrentSweepstakes = _manager.GetSweepstakes();
+            }
+            catch(InvalidOperationException e)
+            {
+                Console.WriteLine(e);
+            }   
+            
         }
 
         public void GetEntries()
         {
             string[] newEntry = new string[3];
             newEntry = UI.EnterInfo();
-            string registrationNumber = CreateRegistrationNumber();
-            Contestant tempContestant = new Contestant(newEntry[0], newEntry[1], newEntry[2], registrationNumber);
+            string newRegistration = CurrentSweepstakes.numberOfContestants.ToString();
+            Contestant tempContestant = new Contestant(newEntry[0], newEntry[1], newEntry[2], newRegistration);
             CurrentSweepstakes.RegisterContestant(tempContestant);
-            registrationCounter++;
         }
 
         public void DetermineWinner()
         {
             string winner = CurrentSweepstakes.PickWinner(); 
             
-        }
-
-        public string CreateRegistrationNumber()
-        {
-            int registration = registrationCounter;
-            string stringRegistration = registration.ToString();
-            return stringRegistration;
         }
 
         
