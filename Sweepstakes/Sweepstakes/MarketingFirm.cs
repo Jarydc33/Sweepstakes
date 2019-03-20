@@ -28,7 +28,7 @@ namespace Sweepstakes
             {
                 CurrentSweepstakes = _manager.GetSweepstakes();
             }
-            catch(InvalidOperationException e)
+            catch(InvalidOperationException e) //need this?
             {
                 Console.WriteLine(e);
             }   
@@ -37,11 +37,9 @@ namespace Sweepstakes
 
         public void GetEntries()
         {
-            string[] newEntry = new string[3];
-            newEntry = UI.EnterInfo();
+            string[] newEntry = UI.EnterInfo();
             string newRegistration = CurrentSweepstakes.numberOfContestants.ToString();
-            Contestant tempContestant = new Contestant(newEntry[0], newEntry[1], newEntry[2], newRegistration);
-            CurrentSweepstakes.RegisterContestant(tempContestant);
+            CurrentSweepstakes.RegisterContestant(new Contestant(newEntry[0], newEntry[1], newEntry[2], newRegistration));
         }
 
         public void DetermineWinner()

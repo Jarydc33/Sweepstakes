@@ -43,12 +43,18 @@ namespace Sweepstakes
 
             sweepstakesDictionary.Add(stringWinner, contestWinner);
 
-            foreach(KeyValuePair<string,Contestant> contestants in sweepstakesDictionary)
+            NotifyAll();
+
+            return contestWinner.FirstName + contestWinner.LastName; //why is this returning?
+        }
+
+        public void NotifyAll()
+        {
+            foreach (KeyValuePair<string, Contestant> contestants in sweepstakesDictionary)
             {
                 PrintContestantInfo(contestants.Value);
                 contestants.Value.Notify(contestWinner);
             }
-            return contestWinner.FirstName + contestWinner.LastName;
         }
 
         public Winner RemoveContestant(string registrationToFind)
