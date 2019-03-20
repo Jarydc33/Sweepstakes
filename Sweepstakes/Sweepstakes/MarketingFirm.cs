@@ -34,7 +34,10 @@ namespace Sweepstakes
 
         public void GetEntries()
         {
-            string[] newEntry = UI.EnterInfo();
+            string[] newEntry = new string[3];
+            newEntry[0] = UI.EnterInfo("First Name");
+            newEntry[1] = UI.EnterInfo("Last Name");
+            newEntry[2] = UI.EnterInfo("Email");
             string newRegistration = CurrentSweepstakes.numberOfContestants.ToString();
             CurrentSweepstakes.RegisterContestant(new Contestant(newEntry[0], newEntry[1], newEntry[2], newRegistration));
         }
@@ -42,7 +45,7 @@ namespace Sweepstakes
         public void DetermineWinner()
         {
             winner = CurrentSweepstakes.PickWinner();
-            SendEmail(CurrentSweepstakes.contestWinner);
+            //SendEmail(CurrentSweepstakes.contestWinner);
 
         }
 

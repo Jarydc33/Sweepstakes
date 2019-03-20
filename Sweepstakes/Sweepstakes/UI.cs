@@ -7,15 +7,11 @@ namespace Sweepstakes
 {
     public static class UI
     {
-        public static string[] EnterInfo()
+        public static string EnterInfo(string infoNeeded)
         {
-            string[] userInfo = new string[3];
-            Console.WriteLine("Please enter your first name: ");
-            userInfo[0] = Console.ReadLine();
-            Console.WriteLine("Please enter your last name: ");
-            userInfo[1] = Console.ReadLine();
-            Console.WriteLine("Please enter your email address: ");
-            userInfo[2] = Console.ReadLine();
+            string userInfo;
+            Console.WriteLine("Please enter your {0}: ", infoNeeded);
+            userInfo = Console.ReadLine();
 
             return userInfo;
         }
