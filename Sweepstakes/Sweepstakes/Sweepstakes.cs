@@ -15,7 +15,7 @@ namespace Sweepstakes
         string name;
         public string Name { get => name; }
         public int numberOfContestants;
-        Winner contestWinner;
+        public Winner contestWinner;
 
         public Sweepstakes(string name)
         {
@@ -76,33 +76,7 @@ namespace Sweepstakes
         public void PrintContestantInfo(Contestant contestant)
         {
             Console.WriteLine("{0} {1}, {2}", contestant.FirstName, contestant.LastName, contestant.Email);
-            
-            //SendEmail(contestant);
-            
         }
-
-        //public void SendEmail(Contestant contestant)
-        //{
-        //    var message = new MimeMessage();
-        //    message.From.Add(new MailboxAddress("Marketing Firm", "MarketFirmTester@outlook.com"));
-        //    message.To.Add(new MailboxAddress(contestant.FirstName + contestant.LastName, ""));
-        //    message.Subject = "Congratulations!";
-
-        //    message.Body = new TextPart("plain")
-        //    {
-        //        Text = @"Congratulations " + contestant.FirstName + ", you entered our marketing sweepstakes and you won! We wanted to send a message out to congratulate you!"
-        //    };
-
-        //    using (var client = new SmtpClient())
-        //    {
-        //        client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
-        //        client.Authenticate("MarketFirmNotifier@gmail.com", "P@$$w0rd!!");
-        //        client.Send(message);
-        //        client.Disconnect(true);
-        //    }
-
-
-        //}
     }
     
 

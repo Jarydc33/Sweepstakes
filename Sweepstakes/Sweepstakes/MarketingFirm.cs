@@ -10,6 +10,7 @@ namespace Sweepstakes
     {
         Sweepstakes CurrentSweepstakes;
         ISweepstakesManager _manager;
+        string winner;
 
         public MarketingFirm(ISweepstakesManager manager)
         {
@@ -24,15 +25,7 @@ namespace Sweepstakes
 
         public void GetNewSweepstakes()
         {
-            try
-            {
-                CurrentSweepstakes = _manager.GetSweepstakes();
-            }
-            catch(InvalidOperationException e) //need this?
-            {
-                Console.WriteLine(e);
-            }   
-            
+            CurrentSweepstakes = _manager.GetSweepstakes(); //trycatch?
         }
 
         public void GetEntries()
@@ -44,7 +37,7 @@ namespace Sweepstakes
 
         public void DetermineWinner()
         {
-            string winner = CurrentSweepstakes.PickWinner(); //use this somehow
+            winner = CurrentSweepstakes.PickWinner(); //use this somehow
             
         }
 
