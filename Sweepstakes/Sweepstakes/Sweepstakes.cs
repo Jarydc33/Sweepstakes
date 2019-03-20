@@ -45,7 +45,7 @@ namespace Sweepstakes
 
             NotifyAll();
 
-            return contestWinner.FirstName + contestWinner.LastName; //why is this returning?
+            return contestWinner.FirstName + contestWinner.LastName;
         }
 
         public void NotifyAll()

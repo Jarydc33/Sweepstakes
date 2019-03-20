@@ -8,12 +8,9 @@ namespace Sweepstakes
     public static class UI
     {
         public static string EnterInfo(string infoNeeded)
-        {
-            string userInfo;
+        {            
             Console.WriteLine("Please enter your {0}: ", infoNeeded);
-            userInfo = Console.ReadLine();
-
-            return userInfo;
+            return Console.ReadLine();
         }
 
         public static string ChooseInterface()
