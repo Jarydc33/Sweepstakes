@@ -44,7 +44,7 @@ namespace Sweepstakes
 
         public void DetermineWinner()
         {
-            string winner = CurrentSweepstakes.PickWinner(); 
+            string winner = CurrentSweepstakes.PickWinner(); //use this somehow
             
         }
 

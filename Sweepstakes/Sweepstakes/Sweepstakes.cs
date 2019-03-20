@@ -85,7 +85,7 @@ namespace Sweepstakes
         //{
         //    var message = new MimeMessage();
         //    message.From.Add(new MailboxAddress("Marketing Firm", "MarketFirmTester@outlook.com"));
-        //    message.To.Add(new MailboxAddress(contestant.FirstName + contestant.LastName, "jarydc333@gmail.com"));
+        //    message.To.Add(new MailboxAddress(contestant.FirstName + contestant.LastName, ""));
         //    message.Subject = "Congratulations!";
 
         //    message.Body = new TextPart("plain")

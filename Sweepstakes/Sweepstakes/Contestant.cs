@@ -55,7 +55,7 @@ namespace Sweepstakes
 
         public virtual void Notify(Contestant winner)
         {
-            Console.WriteLine("Sorry to inform you but you did not win the sweepstakes! The winner was {0} {1}", winner.FirstName,winner.LastName);
+            Console.WriteLine("Sorry to inform you but you did not win the sweepstakes! The winner was {0} {1}\n", winner.FirstName,winner.LastName);
         }
 
         

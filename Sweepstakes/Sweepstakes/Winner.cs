@@ -19,7 +19,7 @@ namespace Sweepstakes
 
         public override void Notify(Contestant winner)
         {
-            Console.WriteLine("Congratulations, {0} {1}! You won the sweepstakes! Please check your email!", winner.FirstName, winner.LastName);
+            Console.WriteLine("Congratulations, {0} {1}! You won the sweepstakes! Please check your email!\n", winner.FirstName, winner.LastName);
             //send email from here.
         }
     }
